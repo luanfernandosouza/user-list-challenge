@@ -18,6 +18,6 @@ export class UserlistService {
 
 
     getUserList () {
-        return this.http.get(this.urlExample)
+        return this.http.get<any[]>(this.urlExample)
     }
 }

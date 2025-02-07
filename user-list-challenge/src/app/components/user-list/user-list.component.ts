@@ -8,25 +8,37 @@ import { UserlistService } from 'src/services/user-list/user-list.service';
 })
 export class UserListComponent implements OnInit {
 
-  userList = [
+  userMockData = [
     {
       name: 'Luan Fernando',
       email: 'luann_nill@hotmail.com'
     },
     {
-      name: 'Test user 2',
-      email: 'luann_nill@gmail.com'
+      name: 'Richard Cancino',
+      email: 'richard.cancino@tallertechnologies.net'
+    },
+    {
+      name: 'Rodrigo Alisio',
+      email: 'rodrigo.alisio@tallertechnologies.net'
     },
   ]
+
+  users: any[] = [];
+  filteredUsers: any[] = [];
+  searchTerm: string = '';
 
   constructor(
     private userlistService: UserlistService
   ) { }
 
   ngOnInit() {
+    this.users = this.userMockData;
+    this.filteredUsers = this.userMockData;
+
     this.userlistService.getUserList().subscribe(
-      (response: any) => {
-        this.userList = response.data;
+      (data: any) => {
+        this.users = data;
+        this.filteredUsers = data;
       },
       (error: any) => {
         console.log(error);
@@ -34,7 +46,10 @@ export class UserListComponent implements OnInit {
     )
   }
 
-
-
+  filterUsers(): void {
+    this.filteredUsers = this.users.filter(user =>
+      user.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 
 }
