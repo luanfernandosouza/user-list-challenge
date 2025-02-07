@@ -8,21 +8,6 @@ import { UserlistService } from 'src/services/user-list/user-list.service';
 })
 export class UserListComponent implements OnInit {
 
-  userMockData = [
-    {
-      name: 'Luan Fernando',
-      email: 'luann_nill@hotmail.com'
-    },
-    {
-      name: 'Richard Cancino',
-      email: 'richard.cancino@tallertechnologies.net'
-    },
-    {
-      name: 'Rodrigo Alisio',
-      email: 'rodrigo.alisio@tallertechnologies.net'
-    },
-  ]
-
   users: any[] = [];
   filteredUsers: any[] = [];
   searchTerm: string = '';
@@ -32,17 +17,11 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.users = this.userMockData;
-    this.filteredUsers = this.userMockData;
-
     this.userlistService.getUserList().subscribe(
       (data: any) => {
-        //For usinf after provide a api return data with Email and name
-        /*this.users = data;
-        this.filteredUsers = data;*/
-
-        this.users = this.userMockData;
-        this.filteredUsers = this.userMockData;
+        debugger
+        this.users = data;
+        this.filteredUsers = data;
       },
       (error: any) => {
         console.log(error);

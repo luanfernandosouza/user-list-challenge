@@ -8,7 +8,7 @@ import { Injectable } from  '@angular/core';
 
 export class UserlistService {
 
-    private urlExample = 'https://jsonplaceholder.typicode.com/todos/10';
+    private urlExample = 'https://jsonplaceholder.typicode.com/users';
 
     constructor(
         private http: HttpClient
