@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserlistService } from 'src/services/user-list/user-list.service';
-import { catchError, switchMap, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
