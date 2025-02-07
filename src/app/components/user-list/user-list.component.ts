@@ -37,8 +37,12 @@ export class UserListComponent implements OnInit {
 
     this.userlistService.getUserList().subscribe(
       (data: any) => {
-        this.users = data;
-        this.filteredUsers = data;
+        //For usinf after provide a api return data with Email and name
+        /*this.users = data;
+        this.filteredUsers = data;*/
+
+        this.users = this.userMockData;
+        this.filteredUsers = this.userMockData;
       },
       (error: any) => {
         console.log(error);
